@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        Enter a String:
+        <input type="text" id="original"><br>
+        <input type="submit" onclick="return reverse()">
+    </form>
+    <script>
+        function reverse(){
+            const str = document.getElementById("original").value ;
+            const reversedStr = Array.from(str).reverse().join("");
+            document.writeln("Given String is "+(document.getElementById("original").value));
+            document.writeln("<br>Reversed String is "+reversedStr);
+        }
+    </script>
+</body>
+</html>

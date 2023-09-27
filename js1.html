@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        Enter a number:
+        <input type="text" id="original"><br>
+        <input type="submit" onclick="return reverseNum()">
+    </form>
+    <script>
+        function reverseNum(){
+            var num = Number(document.getElementById("original").value);
+            var reversed_num = 0;
+            while (num !== 0) {
+                reversed_num = reversed_num * 10 + num % 10;
+                num = Math.floor(num / 10);
+            }
+            document.writeln("Given number is "+Number(document.getElementById("original").value));
+            document.writeln("<br>Reversed number is "+reversed_num);
+        }
+    </script>
+</body>
+</html>

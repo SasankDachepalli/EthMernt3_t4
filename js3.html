@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>1st Number</td>
+                <td><input type="text" id="firstno"></td>
+            </tr>
+            <tr>
+                <td>2nd Number</td>
+                <td><input type="text" id="secno"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Multiply" onclick="multiply()"></td>
+                <td><input type="button" value="Divide" onclick="divide()"></td>
+            </tr>
+        </table>
+    </form>
+    <p>The Result Is</p>
+    <p id="result"></p>
+    <script>
+        function multiply(){
+            var num1 = Number(document.getElementById("firstno").value);
+            var num2 = Number(document.getElementById("secno").value);
+            document.getElementById("result").innerHTML=num1*num2;
+        }
+        function divide(){
+            var num1 = Number(document.getElementById("firstno").value);
+            var num2 = Number(document.getElementById("secno").value);
+            document.getElementById("result").innerHTML=num1/num2;
+        }
+    </script>
+</body>
+</html>

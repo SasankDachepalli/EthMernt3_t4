@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name: <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password: <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="hobbies" class="form-label">Hobbies: <span class="text-danger"></span></label>
+                <select class="form-control" name="cars" id="hobbies">
+                    <option value="reading newspapers">reading newspapers</option>
+                    <option value="writing">writing</option>
+                    <option value="playing chess">playing chess</option>
+                    <option value="cooking">cooking</option>
+                    <option value="travelling">travelling</option>
+                    <option value="gardening">gardening</option>
+            </div>
+                <br>
+                <br>
+                <input type="submit" class="form-control btn btn-danger btn-block" onclick="validateForm()" >
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            const form = document.querySelector("form");
+            const inputs = form.querySelectorAll("input[required], textarea[required]");
+            const warningMessages = document.querySelectorAll(".text-danger");
+            warningMessages.forEach(warning => {
+                warning.textContent = "";
+            });
+            let isValid = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    isValid = false;
+                    input.classList.add("is-invalid");
+                    const fieldName = input.previousElementSibling.textContent.replace(":", "").trim();
+                    const warning = document.createElement("div");
+                    warning.classList.add("text-danger");
+                    warning.textContent = fieldName + " is required.";
+                    input.parentNode.appendChild(warning);
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+            });
+            if (isValid) {
+                form.submit();
+            }
+        }
+    </script>
+</body>
+</html>

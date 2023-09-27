@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <form onsubmit=" return validate()" action="https://www.google.co.in">
+            <table style="margin-top: 100px;">
+              <tr>
+              <td><label for="name" style="font-size:20px">Name:</label></td>
+              <td> <input id="name" type="text" size="25" style="height:20px;"></td>
+               <td> <span id="msg1"></span><br><br></td>
+        </tr>
+         <tr>
+               <td><label for="email" style="font-size:20px">Email:</label></td>
+              <td> <input id="email" type="text" size="25" style="height:20px;"></td>
+               <td><span id="msg2"></span><br><br></td>
+          </tr>
+              <tr> 
+                <td><label for="url" style="font-size:20px">Website:</label></td>
+               <td> <input id="url" type="text" size="25" style="height:20px;"></td>
+                <td><span id="msg3"></span><br><br></td>
+            </tr>
+            <tr>
+              <td><label for="msg" style="font-size:20px;">Message:</label></td>
+               <td> <textarea id="msg" rows="5" cols="25" ></textarea></td>
+              <td><span id="msg4"></span><br><br></td>
+            </tr>
+            <tr>
+               <td><button type="submit" style="margin-left:-15%; padding-left:10px; padding-right: 10px;">Submit</button></td>
+        </tr>
+            </table>
+        </form>
+    </center>
+    <script>
+        function validate() {
+            var nameInput = document.getElementById("name");
+            var emailInput = document.getElementById("email");
+            var urlInput = document.getElementById("url");
+            var msgInput = document.getElementById("msg");
+
+            var nameInputValue = nameInput.value;
+            var emailInputValue = emailInput.value;
+            var urlInputValue = urlInput.value;
+            var msgInputValue = msgInput.value;
+
+            var count=0;
+           
+            if (nameInputValue.length === 0) {
+                document.getElementById("msg1").innerText = "This field is required";
+                document.getElementById("msg1").style.color = "red";
+                nameInput.style.borderColor = "red";
+                count++;
+                
+            }
+            else {
+                nameInput.style.borderColor = ""; 
+                document.getElementById("msg1").innerText = "";
+
+            }
+            var reg1=/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+          
+            if (!emailInputValue.match(reg1)) {
+                document.getElementById("msg2").innerText = "A valid email address is required";
+                document.getElementById("msg2").style.color = "red";
+                emailInput.style.borderColor = "red";
+                count++;
+            } else {
+                emailInput.style.borderColor = ""; 
+                document.getElementById("msg2").innerText = "";
+
+            }
+            var reg2=/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+            if (!urlInputValue.match(reg2)) {
+                document.getElementById("msg3").innerText = "A valid url is required";
+                document.getElementById("msg3").style.color = "red";
+                urlInput.style.borderColor = "red";
+                count++;
+            } else {
+                urlInput.style.borderColor = ""; 
+                document.getElementById("msg3").innerText = "";
+
+            }
+            if (msgInputValue.length === 0) {
+                document.getElementById("msg4").innerText = "This field is required";
+                document.getElementById("msg4").style.color = "red";
+                msgInput.style.borderColor = "red";
+                count++;
+                
+            }
+            else {
+                msgInput.style.borderColor = ""; 
+                document.getElementById("msg4").innerText = "";
+
+            }
+           if(count==0){
+                return true;
+           }
+           return false;
+        } 
+    </script>
+</body>
+</html>
